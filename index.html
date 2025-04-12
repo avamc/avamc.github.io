@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,100 +7,93 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 20px;
+        }
+        .quiz-container {
+            margin: 20px 0;
         }
         .question {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
-        .answer {
+        .answer-box {
             display: none;
             margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
+            font-size: 0.9em;
+            color: #555;
         }
-        select {
-            padding: 5px;
+        .show-answer-btn {
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <h1>Korean Grammar Quiz</h1>
-    <form id="quizForm">
+    
+    <div id="quiz" class="quiz-container">
+        <!-- Question 1 -->
         <div class="question">
-            <label>1. 학생 ___ 학교에 갑니다. (Choose the correct marker)</label>
-            <select id="question1">
-                <option value="">Select</option>
-                <option value="이/가">이/가 (Subject)</option>
-                <option value="은/는">은/는 (Topic)</option>
-                <option value="을/를">을/를 (Object)</option>
+            <label for="question1">1. 나는 학교에 가요.</label><br>
+            <select id="question1" class="answer-dropdown">
+                <option value="">Select a marker</option>
+                <option value="subject">Subject</option>
+                <option value="object">Object</option>
+                <option value="topic">Topic</option>
             </select>
-            <button type="button" onclick="showAnswer('1')">Show Answer</button>
-            <div class="answer" id="answer1">
-                <p><strong>Answer:</strong> 이/가</p>
-                <p><strong>Reasoning:</strong> "학생이" is the subject of the sentence, which is performing the action of going to school.</p>
-                <p><strong>Translation:</strong> The student is going to school.</p>
-            </div>
+            <button class="show-answer-btn" onclick="showAnswer(1)">Show Answer</button>
+            <div id="answer1" class="answer-box"></div>
         </div>
 
+        <!-- Question 2 -->
         <div class="question">
-            <label>2. 저는 사과 ___ 좋아해요. (Choose the correct marker)</label>
-            <select id="question2">
-                <option value="">Select</option>
-                <option value="이/가">이/가 (Subject)</option>
-                <option value="은/는">은/는 (Topic)</option>
-                <option value="을/를">을/를 (Object)</option>
+            <label for="question2">2. 저는 사과를 좋아해요.</label><br>
+            <select id="question2" class="answer-dropdown">
+                <option value="">Select a marker</option>
+                <option value="subject">Subject</option>
+                <option value="object">Object</option>
+                <option value="topic">Topic</option>
             </select>
-            <button type="button" onclick="showAnswer('2')">Show Answer</button>
-            <div class="answer" id="answer2">
-                <p><strong>Answer:</strong> 을/를</p>
-                <p><strong>Reasoning:</strong> "사과를" is the object of the verb "좋아하다" (to like), so the object marker 을/를 is used.</p>
-                <p><strong>Translation:</strong> I like apples.</p>
-            </div>
+            <button class="show-answer-btn" onclick="showAnswer(2)">Show Answer</button>
+            <div id="answer2" class="answer-box"></div>
         </div>
 
-        <div class="question">
-            <label>3. 날씨 ___ 좋아요. (Choose the correct marker)</label>
-            <select id="question3">
-                <option value="">Select</option>
-                <option value="이/가">이/가 (Subject)</option>
-                <option value="은/는">은/는 (Topic)</option>
-                <option value="을/를">을/를 (Object)</option>
-            </select>
-            <button type="button" onclick="showAnswer('3')">Show Answer</button>
-            <div class="answer" id="answer3">
-                <p><strong>Answer:</strong> 이/가</p>
-                <p><strong>Reasoning:</strong> "날씨가" is the subject of the sentence and is being described as good (좋아요).</p>
-                <p><strong>Translation:</strong> The weather is good.</p>
-            </div>
-        </div>
-
-        <div class="question">
-            <label>4. 동생 ___ 집에 있어요. (Choose the correct marker)</label>
-            <select id="question4">
-                <option value="">Select</option>
-                <option value="이/가">이/가 (Subject)</option>
-                <option value="은/는">은/는 (Topic)</option>
-                <option value="을/를">을/를 (Object)</option>
-            </select>
-            <button type="button" onclick="showAnswer('4')">Show Answer</button>
-            <div class="answer" id="answer4">
-                <p><strong>Answer:</strong> 이/가</p>
-                <p><strong>Reasoning:</strong> "동생이" is the subject of the sentence (the one who is in the house).</p>
-                <p><strong>Translation:</strong> My younger sibling is at home.</p>
-            </div>
-        </div>
-
-        <!-- Add more questions here if you'd like -->
-    </form>
+        <!-- Add more questions below -->
+        <!-- Repeat the structure for the remaining questions -->
+        
+    </div>
 
     <script>
         function showAnswer(questionNumber) {
-            var answerDiv = document.getElementById('answer' + questionNumber);
-            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
-                answerDiv.style.display = 'block';
-            } else {
-                answerDiv.style.display = 'none';
+            let selectedMarker = document.getElementById("question" + questionNumber).value;
+            let answerBox = document.getElementById("answer" + questionNumber);
+            
+            if (questionNumber === 1) {
+                if (selectedMarker === "subject") {
+                    answerBox.innerHTML = "<strong>Answer:</strong> Subject marker (은/는)<br><strong>Reasoning:</strong> '나는' uses the topic marker 은/는 to introduce the speaker's topic.<br><strong>Translation:</strong> I am going to school.";
+                } else if (selectedMarker === "object") {
+                    answerBox.innerHTML = "<strong>Incorrect.</strong> The sentence does not have an object marker.";
+                } else if (selectedMarker === "topic") {
+                    answerBox.innerHTML = "<strong>Answer:</strong> Topic marker (은/는)<br><strong>Reasoning:</strong> '나는' uses the topic marker 은/는 to introduce the speaker's topic.<br><strong>Translation:</strong> I am going to school.";
+                } else {
+                    answerBox.innerHTML = "<strong>Please select a marker.</strong>";
+                }
+            }
+            
+            if (questionNumber === 2) {
+                if (selectedMarker === "subject") {
+                    answerBox.innerHTML = "<strong>Incorrect.</strong> The sentence does not have a subject marker here.";
+                } else if (selectedMarker === "object") {
+                    answerBox.innerHTML = "<strong>Answer:</strong> Object marker (을/를)<br><strong>Reasoning:</strong> '사과를' uses the object marker 을/를 to indicate that the object of the verb 좋아해요 is 사과 (apple).<br><strong>Translation:</strong> I like apples.";
+                } else if (selectedMarker === "topic") {
+                    answerBox.innerHTML = "<strong>Incorrect.</strong> The sentence uses an object marker, not a topic marker.";
+                } else {
+                    answerBox.innerHTML = "<strong>Please select a marker.</strong>";
+                }
             }
         }
     </script>

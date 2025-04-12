@@ -1,161 +1,108 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Korean Marker Quiz</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
-    h1 {
-      color: #4a4a4a;
-    }
-    .question {
-      margin-bottom: 15px;
-    }
-    button {
-      padding: 10px 15px;
-      margin-top: 20px;
-    }
-    .result {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Grammar Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        select {
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Korean Grammar Quiz</h1>
+    <form id="quizForm">
+        <div class="question">
+            <label>1. 학생 ___ 학교에 갑니다. (Choose the correct marker)</label>
+            <select id="question1">
+                <option value="">Select</option>
+                <option value="이/가">이/가 (Subject)</option>
+                <option value="은/는">은/는 (Topic)</option>
+                <option value="을/를">을/를 (Object)</option>
+            </select>
+            <button type="button" onclick="showAnswer('1')">Show Answer</button>
+            <div class="answer" id="answer1">
+                <p><strong>Answer:</strong> 이/가</p>
+                <p><strong>Reasoning:</strong> "학생이" is the subject of the sentence, which is performing the action of going to school.</p>
+                <p><strong>Translation:</strong> The student is going to school.</p>
+            </div>
+        </div>
 
-  <h1>Korean Topic vs Subject Marker Quiz</h1>
+        <div class="question">
+            <label>2. 저는 사과 ___ 좋아해요. (Choose the correct marker)</label>
+            <select id="question2">
+                <option value="">Select</option>
+                <option value="이/가">이/가 (Subject)</option>
+                <option value="은/는">은/는 (Topic)</option>
+                <option value="을/를">을/를 (Object)</option>
+            </select>
+            <button type="button" onclick="showAnswer('2')">Show Answer</button>
+            <div class="answer" id="answer2">
+                <p><strong>Answer:</strong> 을/를</p>
+                <p><strong>Reasoning:</strong> "사과를" is the object of the verb "좋아하다" (to like), so the object marker 을/를 is used.</p>
+                <p><strong>Translation:</strong> I like apples.</p>
+            </div>
+        </div>
 
-  <form id="quiz-form">
-    <div class="question">1. 학생 <select name="q1">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 학교에 갑니다.</div>
+        <div class="question">
+            <label>3. 날씨 ___ 좋아요. (Choose the correct marker)</label>
+            <select id="question3">
+                <option value="">Select</option>
+                <option value="이/가">이/가 (Subject)</option>
+                <option value="은/는">은/는 (Topic)</option>
+                <option value="을/를">을/를 (Object)</option>
+            </select>
+            <button type="button" onclick="showAnswer('3')">Show Answer</button>
+            <div class="answer" id="answer3">
+                <p><strong>Answer:</strong> 이/가</p>
+                <p><strong>Reasoning:</strong> "날씨가" is the subject of the sentence and is being described as good (좋아요).</p>
+                <p><strong>Translation:</strong> The weather is good.</p>
+            </div>
+        </div>
 
-    <div class="question">2. 저는 사과 <select name="q2">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 좋아해요.</div>
+        <div class="question">
+            <label>4. 동생 ___ 집에 있어요. (Choose the correct marker)</label>
+            <select id="question4">
+                <option value="">Select</option>
+                <option value="이/가">이/가 (Subject)</option>
+                <option value="은/는">은/는 (Topic)</option>
+                <option value="을/를">을/를 (Object)</option>
+            </select>
+            <button type="button" onclick="showAnswer('4')">Show Answer</button>
+            <div class="answer" id="answer4">
+                <p><strong>Answer:</strong> 이/가</p>
+                <p><strong>Reasoning:</strong> "동생이" is the subject of the sentence (the one who is in the house).</p>
+                <p><strong>Translation:</strong> My younger sibling is at home.</p>
+            </div>
+        </div>
 
-    <div class="question">3. 날씨 <select name="q3">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 좋아요.</div>
+        <!-- Add more questions here if you'd like -->
+    </form>
 
-    <div class="question">4. 동생 <select name="q4">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 집에 있어요.</div>
-
-    <div class="question">5. 이 책 <select name="q5">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 재미있어요.</div>
-
-    <div class="question">6. 개 <select name="q6">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 뛰어요.</div>
-
-    <div class="question">7. 고양이 <select name="q7">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 물을 마셔요.</div>
-
-    <div class="question">8. 아버지 <select name="q8">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 일찍 일어나요.</div>
-
-    <div class="question">9. 민수 <select name="q9">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 운동을 좋아해요.</div>
-
-    <div class="question">10. 사과 <select name="q10a">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 비싸요. 바나나 <select name="q10b">
-      <option value="">--choose--</option>
-      <option value="은">은</option>
-      <option value="는">는</option>
-      <option value="이">이</option>
-      <option value="가">가</option>
-    </select> 싸요.</div>
-
-    <button type="button" onclick="checkAnswers()">Check Answers</button>
-  </form>
-
-  <div class="result" id="result"></div>
-
-  <script>
-    const answers = {
-      q1: "이",
-      q2: "를",
-      q3: "는",
-      q4: "이",
-      q5: "은",
-      q6: "가",
-      q7: "가",
-      q8: "가",
-      q9: "는",
-      q10a: "는",
-      q10b: "는"
-    };
-
-    function checkAnswers() {
-      let form = document.forms["quiz-form"];
-      let score = 0;
-
-      if (form["q1"].value === "이") score++;
-      if (form["q2"].value === "는") score++;
-      if (form["q3"].value === "는") score++;
-      if (form["q4"].value === "이") score++;
-      if (form["q5"].value === "은") score++;
-      if (form["q6"].value === "가") score++;
-      if (form["q7"].value === "가") score++;
-      if (form["q8"].value === "가") score++;
-      if (form["q9"].value === "는") score++;
-      if (form["q10a"].value === "는") score++;
-      if (form["q10b"].value === "는") score++;
-
-      document.getElementById("result").innerText = `You got ${score} out of 11 correct!`;
-    }
-  </script>
-
+    <script>
+        function showAnswer(questionNumber) {
+            var answerDiv = document.getElementById('answer' + questionNumber);
+            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                answerDiv.style.display = 'block';
+            } else {
+                answerDiv.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

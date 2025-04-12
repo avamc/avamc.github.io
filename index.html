@@ -1,7 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Korean Marker Quiz</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #4a4a4a;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 20px;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>portfiolio</p>
+
+  <h1>Korean Topic vs Subject Marker Quiz</h1>
+
+  <form id="quiz-form">
+    <div class="question">1. 학생 <select name="q1">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 학교에 갑니다.</div>
+
+    <div class="question">2. 저는 사과 <select name="q2">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 좋아해요.</div>
+
+    <div class="question">3. 날씨 <select name="q3">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 좋아요.</div>
+
+    <div class="question">4. 동생 <select name="q4">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 집에 있어요.</div>
+
+    <div class="question">5. 이 책 <select name="q5">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 재미있어요.</div>
+
+    <div class="question">6. 개 <select name="q6">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 뛰어요.</div>
+
+    <div class="question">7. 고양이 <select name="q7">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 물을 마셔요.</div>
+
+    <div class="question">8. 아버지 <select name="q8">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 일찍 일어나요.</div>
+
+    <div class="question">9. 민수 <select name="q9">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 운동을 좋아해요.</div>
+
+    <div class="question">10. 사과 <select name="q10a">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 비싸요. 바나나 <select name="q10b">
+      <option value="">--choose--</option>
+      <option value="은">은</option>
+      <option value="는">는</option>
+      <option value="이">이</option>
+      <option value="가">가</option>
+    </select> 싸요.</div>
+
+    <button type="button" onclick="checkAnswers()">Check Answers</button>
+  </form>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const answers = {
+      q1: "이",
+      q2: "를",
+      q3: "는",
+      q4: "이",
+      q5: "은",
+      q6: "가",
+      q7: "가",
+      q8: "가",
+      q9: "는",
+      q10a: "는",
+      q10b: "는"
+    };
+
+    function checkAnswers() {
+      let form = document.forms["quiz-form"];
+      let score = 0;
+
+      if (form["q1"].value === "이") score++;
+      if (form["q2"].value === "는") score++;
+      if (form["q3"].value === "는") score++;
+      if (form["q4"].value === "이") score++;
+      if (form["q5"].value === "은") score++;
+      if (form["q6"].value === "가") score++;
+      if (form["q7"].value === "가") score++;
+      if (form["q8"].value === "가") score++;
+      if (form["q9"].value === "는") score++;
+      if (form["q10a"].value === "는") score++;
+      if (form["q10b"].value === "는") score++;
+
+      document.getElementById("result").innerText = `You got ${score} out of 11 correct!`;
+    }
+  </script>
+
 </body>
 </html>

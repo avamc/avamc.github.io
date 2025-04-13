@@ -1,101 +1,177 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korean Grammar Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        .quiz-container {
-            margin: 20px 0;
-        }
-        .question {
-            margin-bottom: 10px;
-        }
-        .answer-box {
-            display: none;
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #555;
-        }
-        .show-answer-btn {
-            cursor: pointer;
-            padding: 5px 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Korean Vocab Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    h2 { margin-top: 30px; }
+    .quiz-item { margin-bottom: 15px; }
+    select { margin-left: 10px; }
+    button { margin-left: 10px; }
+    .answer { margin-left: 10px; color: green; font-weight: bold; display: none; }
+  </style>
 </head>
 <body>
-    <h1>Korean Grammar Quiz</h1>
-    
-    <div id="quiz" class="quiz-container">
-        <!-- Question 1 -->
-        <div class="question">
-            <label for="question1">1. 나는 학교에 가요.</label><br>
-            <select id="question1" class="answer-dropdown">
-                <option value="">Select a marker</option>
-                <option value="subject">Subject</option>
-                <option value="object">Object</option>
-                <option value="topic">Topic</option>
-            </select>
-            <button class="show-answer-btn" onclick="showAnswer(1)">Show Answer</button>
-            <div id="answer1" class="answer-box"></div>
-        </div>
 
-        <!-- Question 2 -->
-        <div class="question">
-            <label for="question2">2. 저는 사과를 좋아해요.</label><br>
-            <select id="question2" class="answer-dropdown">
-                <option value="">Select a marker</option>
-                <option value="subject">Subject</option>
-                <option value="object">Object</option>
-                <option value="topic">Topic</option>
-            </select>
-            <button class="show-answer-btn" onclick="showAnswer(2)">Show Answer</button>
-            <div id="answer2" class="answer-box"></div>
-        </div>
+  <h1>🇰🇷 Korean Vocabulary Quiz</h1>
 
-        <!-- Add more questions below -->
-        <!-- Repeat the structure for the remaining questions -->
-        
-    </div>
+  <!-- Section 1: Countries -->
+  <h2>1. Countries</h2>
+  <div class="quiz-item">
+    한국
+    <select>
+      <option>-- Choose --</option>
+      <option>China</option>
+      <option>Korea</option>
+      <option>Japan</option>
+    </select>
+    <button onclick="showAnswer(this, 'Korea')">Show Answer</button>
+    <span class="answer">Korea</span>
+  </div>
+  <div class="quiz-item">
+    일본
+    <select>
+      <option>-- Choose --</option>
+      <option>Korea</option>
+      <option>Japan</option>
+      <option>USA</option>
+    </select>
+    <button onclick="showAnswer(this, 'Japan')">Show Answer</button>
+    <span class="answer">Japan</span>
+  </div>
 
-    <script>
-        function showAnswer(questionNumber) {
-            let selectedMarker = document.getElementById("question" + questionNumber).value;
-            let answerBox = document.getElementById("answer" + questionNumber);
-            
-            if (questionNumber === 1) {
-                if (selectedMarker === "subject") {
-                    answerBox.innerHTML = "<strong>Answer:</strong> Subject marker (은/는)<br><strong>Reasoning:</strong> '나는' uses the topic marker 은/는 to introduce the speaker's topic.<br><strong>Translation:</strong> I am going to school.";
-                } else if (selectedMarker === "object") {
-                    answerBox.innerHTML = "<strong>Incorrect.</strong> The sentence does not have an object marker.";
-                } else if (selectedMarker === "topic") {
-                    answerBox.innerHTML = "<strong>Answer:</strong> Topic marker (은/는)<br><strong>Reasoning:</strong> '나는' uses the topic marker 은/는 to introduce the speaker's topic.<br><strong>Translation:</strong> I am going to school.";
-                } else {
-                    answerBox.innerHTML = "<strong>Please select a marker.</strong>";
-                }
-            }
-            
-            if (questionNumber === 2) {
-                if (selectedMarker === "subject") {
-                    answerBox.innerHTML = "<strong>Incorrect.</strong> The sentence does not have a subject marker here.";
-                } else if (selectedMarker === "object") {
-                    answerBox.innerHTML = "<strong>Answer:</strong> Object marker (을/를)<br><strong>Reasoning:</strong> '사과를' uses the object marker 을/를 to indicate that the object of the verb 좋아해요 is 사과 (apple).<br><strong>Translation:</strong> I like apples.";
-                } else if (selectedMarker === "topic") {
-                    answerBox.innerHTML = "<strong>Incorrect.</strong> The sentence uses an object marker, not a topic marker.";
-                } else {
-                    answerBox.innerHTML = "<strong>Please select a marker.</strong>";
-                }
-            }
-        }
-    </script>
+  <!-- Section 2: Basic Jobs -->
+  <h2>2. Basic Jobs</h2>
+  <div class="quiz-item">
+    의사
+    <select>
+      <option>-- Choose --</option>
+      <option>Doctor</option>
+      <option>Teacher</option>
+      <option>Student</option>
+    </select>
+    <button onclick="showAnswer(this, 'Doctor')">Show Answer</button>
+    <span class="answer">Doctor</span>
+  </div>
+  <div class="quiz-item">
+    학생
+    <select>
+      <option>-- Choose --</option>
+      <option>Engineer</option>
+      <option>Student</option>
+      <option>Chef</option>
+    </select>
+    <button onclick="showAnswer(this, 'Student')">Show Answer</button>
+    <span class="answer">Student</span>
+  </div>
+
+  <!-- Section 3: Classroom Objects -->
+  <h2>3. Classroom Objects</h2>
+  <div class="quiz-item">
+    책상
+    <select>
+      <option>-- Choose --</option>
+      <option>Book</option>
+      <option>Desk</option>
+      <option>Chair</option>
+    </select>
+    <button onclick="showAnswer(this, 'Desk')">Show Answer</button>
+    <span class="answer">Desk</span>
+  </div>
+  <div class="quiz-item">
+    의자
+    <select>
+      <option>-- Choose --</option>
+      <option>Pen</option>
+      <option>Desk</option>
+      <option>Chair</option>
+    </select>
+    <button onclick="showAnswer(this, 'Chair')">Show Answer</button>
+    <span class="answer">Chair</span>
+  </div>
+
+  <!-- Section 4: Basic Verbs -->
+  <h2>4. Basic Verbs</h2>
+  <div class="quiz-item">
+    자다
+    <select>
+      <option>-- Choose --</option>
+      <option>To sleep</option>
+      <option>To eat</option>
+      <option>To go</option>
+    </select>
+    <button onclick="showAnswer(this, 'To sleep')">Show Answer</button>
+    <span class="answer">To sleep</span>
+  </div>
+  <div class="quiz-item">
+    보다
+    <select>
+      <option>-- Choose --</option>
+      <option>To see/look</option>
+      <option>To sleep</option>
+      <option>To read</option>
+    </select>
+    <button onclick="showAnswer(this, 'To see/look')">Show Answer</button>
+    <span class="answer">To see/look</span>
+  </div>
+
+  <!-- Section 5: Basic Locations/Places -->
+  <h2>5. Basic Locations / Places</h2>
+  <div class="quiz-item">
+    학교
+    <select>
+      <option>-- Choose --</option>
+      <option>Library</option>
+      <option>School</option>
+      <option>Hospital</option>
+    </select>
+    <button onclick="showAnswer(this, 'School')">Show Answer</button>
+    <span class="answer">School</span>
+  </div>
+  <div class="quiz-item">
+    병원
+    <select>
+      <option>-- Choose --</option>
+      <option>Store</option>
+      <option>School</option>
+      <option>Hospital</option>
+    </select>
+    <button onclick="showAnswer(this, 'Hospital')">Show Answer</button>
+    <span class="answer">Hospital</span>
+  </div>
+
+  <!-- Section 6: Basic Adjectives -->
+  <h2>6. Basic Adjectives</h2>
+  <div class="quiz-item">
+    맛있다
+    <select>
+      <option>-- Choose --</option>
+      <option>Delicious</option>
+      <option>Expensive</option>
+      <option>Fast</option>
+    </select>
+    <button onclick="showAnswer(this, 'Delicious')">Show Answer</button>
+    <span class="answer">Delicious</span>
+  </div>
+  <div class="quiz-item">
+    싸다
+    <select>
+      <option>-- Choose --</option>
+      <option>Cheap</option>
+      <option>Slow</option>
+      <option>Cold</option>
+    </select>
+    <button onclick="showAnswer(this, 'Cheap')">Show Answer</button>
+    <span class="answer">Cheap</span>
+  </div>
+
+  <script>
+    function showAnswer(button, correctAnswer) {
+      const span = button.nextElementSibling;
+      span.style.display = 'inline';
+    }
+  </script>
+
 </body>
 </html>
